@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Meal Builder</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Welcome to the Healthy Meal Builder!</h1>
+    <button class="backtosite" onclick="window.location.href='https://lemartinezfrz.wixsite.com/nutrft/meal-builder';">Back</button>
+    <form action="/search" method="POST">
+        <label for="ingredients">Enter Ingredients (comma-separated):</label>
+        <input type="text" id="ingredients" name="ingredients" required>
+        <button type="submit">Search Recipes</button>
+    </form>
+</body>
+</html>

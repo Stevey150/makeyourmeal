@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Results</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>{{ message }}</h1>
+    <button class="backbutton" onclick="window.location.href='{{ url_for('home') }}'">Back</button>
+    {% if recipes %}
+        <ul>
+        {% for recipe in recipes %}
+            <li>
+                <h2>{{ recipe['Title'] }}</h2>
+                <p><strong>Ingredients:</strong> {{ recipe['Ingredients'] }}</p>
+                <p><strong>Instructions:</strong> {{ recipe['Instructions'] }}</p>
+                <img src="{{ url_for('static', filename='images/' + recipe['Image_Name']) }}" alt="{{ recipe['Title'] }}">
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No recipes found.</p>
+    {% endif %}
+
+    
+</body>
+</html>

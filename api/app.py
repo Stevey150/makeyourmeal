@@ -79,4 +79,6 @@ def search():
         return render_template('results.html', recipes=[], message="Dataset is empty or required columns not found.")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
+#   goes here ^
+    #debug=True

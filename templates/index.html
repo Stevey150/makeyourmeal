@@ -7,21 +7,34 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Welcome to the Healthy Meal Builder!</h1>
-    <button class="backtosite" onclick="window.location.href='https://lemartinezfrz.wixsite.com/nutrft/meal-builder';">Back</button>
-    
-    <!-- Form to search recipes by ingredients -->
-    <form action="/search" method="POST">
-        <label for="ingredients">Enter Ingredients (comma-separated):</label>
-        <input type="text" id="ingredients" name="ingredients">
-        <button type="submit">Search Recipes</button>
-    </form>
+    <div class="header">
+        <h1>Welcome to the Healthy Meal Builder!</h1>
+        <button class="backtosite" onclick="window.location.href='https://nutrft.vercel.app/';">Back</button>
+    </div>
 
-    <!-- Form to search recipes by title -->
-    <form action="/search_by_title" method="POST">
-        <label for="title">Enter Recipe Title:</label>
-        <input type="text" id="title" name="title">
-        <button type="submit">Search by Title</button>
-    </form>
+    <div class="content">
+        <!-- Form to search recipes by ingredients -->
+        <form action="/search" method="POST">
+            <label for="ingredients">Enter Ingredients (comma-separated):</label>
+            <input type="text" id="ingredients" name="ingredients">
+            <button type="submit">Search Recipes</button>
+        </form>
+
+        <!-- Form to search recipes by title -->
+        <form action="/search_by_title" method="POST">
+            <label for="title">Enter Recipe Title:</label>
+            <input type="text" id="title" name="title">
+            <button type="submit">Search by Title</button>
+        </form>
+
+        <!-- Display picture below the text boxes -->
+        <div class="image-container" style="text-align: center;">
+            <img src="{{ url_for('static', filename='otherpic.jpg') }}" alt="Healthy Meal Builder Image" style="max-width: 100%; margin-top: 20px;">
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Healthy Meal Builder. All rights reserved.</p>
+    </div>
 </body>
 </html>

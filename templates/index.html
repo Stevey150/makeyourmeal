@@ -8,11 +8,20 @@
 </head>
 <body>
     <h1>Welcome to the Healthy Meal Builder!</h1>
-    <button class="backtosite" onclick="window.location.href='https://nutrft.vercel.app/';">Back</button>
+    <button class="backtosite" onclick="window.location.href='https://lemartinezfrz.wixsite.com/nutrft/meal-builder';">Back</button>
+    
+    <!-- Form to search recipes by ingredients -->
     <form action="/search" method="POST">
         <label for="ingredients">Enter Ingredients (comma-separated):</label>
-        <input type="text" id="ingredients" name="ingredients" required>
+        <input type="text" id="ingredients" name="ingredients">
         <button type="submit">Search Recipes</button>
+    </form>
+
+    <!-- Form to search recipes by title -->
+    <form action="/search_by_title" method="POST">
+        <label for="title">Enter Recipe Title:</label>
+        <input type="text" id="title" name="title">
+        <button type="submit">Search by Title</button>
     </form>
 </body>
 </html>

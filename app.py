@@ -1,8 +1,8 @@
+from flask import Flask, render_template, request
+from supabase import create_client, Client
 import os
 import pandas as pd
 import ast
-from flask import Flask, render_template, request
-from supabase import create_client, Client
 
 # Initialize Supabase client
 url = "https://pfzxkjlmismuwjpcvtzl.supabase.co"  # Your Supabase project URL
@@ -78,7 +78,30 @@ def search():
     else:
         return render_template('results.html', recipes=[], message="Dataset is empty or required columns not found.")
 
+@app.route('/search_by_title', methods=['POST'])
+def search_by_title():
+    # Get input title from the form
+    input_title = request.form.get('title')
+    print("Received input title:", input_title)
+
+    if not input_title:
+        return render_template('results.html', recipes=[], message="No title provided.")
+
+    # Filter recipes based on matching the title
+    if not data.empty and 'Title' in data.columns:
+        filtered_data = data[data['Title'].str.contains(input_title, case=False, na=False)]
+
+        # Convert filtered recipes to a list of dictionaries for rendering
+        recipes = filtered_data[['Title', 'Ingredients', 'Instructions', 'Image_Name']].to_dict(orient='records')
+
+        if recipes:
+            return render_template('results.html', recipes=recipes, message=f"Found {len(recipes)} recipes with title matching '{input_title}'.")
+        else:
+            return render_template('results.html', recipes=[], message="No recipes found with that title.")
+    else:
+        return render_template('results.html', recipes=[], message="Dataset is empty or required columns not found.")
+
 if __name__ == '__main__':
     app.run()
-#   goes here ^
-    #debug=True
+
+#debug=True
